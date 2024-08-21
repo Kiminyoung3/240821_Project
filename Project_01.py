@@ -6,6 +6,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 import seaborn as sns
+from sklearn.ensemble import GradientBoostingRegressor
+
 
 #https://chatgpt.com/share/09fdec8e-881c-4e1b-8cdd-d515e3bff9f8
 
@@ -48,6 +50,73 @@ sorted_df_by_transport = df.sort_values(by='1날짜 및 시간')
 with pd.option_context('display.max_columns', None):  # 모든 열을 출력
     print("Sorted by '1날짜 및 시간':")
     print(sorted_df_by_transport.head())
+
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error, r2_score
+#랜덤포레스트 회귀
+# # 데이터 준비
+# X = df[['Feature1', 'Feature2', 'Feature3', ..., 'Feature11']]  # 독립변수
+# y = df['Heatstroke Cases']  # 종속변수
+#
+# # 데이터 분할
+# X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+#
+# # 모델 훈련
+# model = RandomForestRegressor(n_estimators=100, random_state=42)
+# model.fit(X_train, y_train)
+#
+# # 예측
+# y_pred = model.predict(X_test)
+#
+# # 평가
+# print("Mean Squared Error:", mean_squared_error(y_test, y_pred))
+# print("R^2 Score:", r2_score(y_test, y_pred))
+
+
+#그레이디언트 부스팅 회귀
+# # 데이터 준비
+# X = df[['Feature1', 'Feature2', 'Feature3', ..., 'Feature11']]  # 독립변수
+# y = df['Heatstroke Cases']  # 종속변수
+#
+# # 데이터 분할
+# X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+#
+# # 모델 훈련
+# model = GradientBoostingRegressor(n_estimators=100, random_state=42)
+# model.fit(X_train, y_train)
+#
+# # 예측
+# y_pred = model.predict(X_test)
+#
+# # 평가
+# print("Mean Squared Error:", mean_squared_error(y_test, y_pred))
+# print("R^2 Score:", r2_score(y_test, y_pred))
+
+
+#엘라스틱넷 회귀
+# from sklearn.linear_model import ElasticNet
+# from sklearn.model_selection import train_test_split
+# from sklearn.metrics import mean_squared_error, r2_score
+#
+# # 데이터 준비
+# X = df[['Feature1', 'Feature2', 'Feature3', ..., 'Feature11']]  # 독립변수
+# y = df['Heatstroke Cases']  # 종속변수
+#
+# # 데이터 분할
+# X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+#
+# # 모델 훈련
+# model = ElasticNet(alpha=0.1, l1_ratio=0.5)  # alpha는 정규화 강도, l1_ratio는 L1 비율
+# model.fit(X_train, y_train)
+#
+# # 예측
+# y_pred = model.predict(X_test)
+#
+# # 평가
+# print("Mean Squared Error:", mean_squared_error(y_test, y_pred))
+# print("R^2 Score:", r2_score(y_test, y_pred))
+
 
 #__________________________23.전날 이송 인원수_________________________________________________________
 #
