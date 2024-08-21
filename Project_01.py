@@ -7,6 +7,8 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 import seaborn as sns
 
+#https://chatgpt.com/share/09fdec8e-881c-4e1b-8cdd-d515e3bff9f8
+
 # 1. CSV 파일 읽기
 df = pd.read_csv('./data/6.Heatstroke_patient_prediction_train_data.csv')
 
@@ -25,10 +27,10 @@ header = ['1날짜 및 시간', '2이송 인원', '3최고기온', '4평균기�
 #     '14.Average Local Pressure (hPa)', '15.Average Sea Level Pressure (hPa)', '16.Maximum Wind Speed (m/s)', '17.Maximum Gust Wind Speed (m/s)',
 #     '18.Temperature Difference (High-Low)', '19.Apparent Temperature (℃)', '20.Discomfort Index', '21.Month', '22.Day of the Week',
 #     '23.Weekend and Holidays', '24.Day_Clear Percentage', '25.Day_Cloudy Percentage', '26.Day_Rain Percentage', '27.Day_Lightning Presence',
-#     '28Night_Clear Percentage', 'Night_Cloudy Percentage', 'Night_Rain Percentage', 'Night_Lightning Presence',
-#     'Difference in High Temp from Previous Day', 'Difference in Average Temp from Previous Day', 'Difference in Low Temp from Previous Day',
-#     '5-Day Moving Average of High Temp', '5-Day Moving Average of Average Temp', '5-Day Moving Average of Apparent Temp',
-#     '5-Day Moving Average of Discomfort Index', 'Transported Patients on Previous Day', '5-Day Moving Average of Transported Patients', 'Year'
+#     '28.Night_Clear Percentage', '29.Night_Cloudy Percentage', '30.Night_Rain Percentage', '31.Night_Lightning Presence',
+#     '32.Difference in High Temp from Previous Day', '33.Difference in Average Temp from Previous Day', '34.Difference in Low Temp from Previous Day',
+#     '35.5-Day Moving Average of High Temp', '36.5-Day Moving Average of Average Temp', '37.5-Day Moving Average of Apparent Temp',
+#     '38.5-Day Moving Average of Discomfort Index', '39.Transported Patients on Previous Day', '40.5-Day Moving Average of Transported Patients', '41.Year'
 # ]
 df.columns = header
 
@@ -46,6 +48,21 @@ sorted_df_by_transport = df.sort_values(by='1날짜 및 시간')
 with pd.option_context('display.max_columns', None):  # 모든 열을 출력
     print("Sorted by '1날짜 및 시간':")
     print(sorted_df_by_transport.head())
+
+#__________________________23.전날 이송 인원수_________________________________________________________
+#
+# # X와 Y 설정
+# X5 = data['39전일의 이송 인원수']
+# Y5 = data['2이송 인원']
+#
+# # 데이터 분포 시각화 (전체 데이터)
+# plt.figure(figsize=(10, 6))
+# plt.scatter(X5, Y5, color='LightPink', label='Actual Data Points', marker='*', s=30, alpha=0.5)
+# plt.title("Discomfort Index vs Number of Heatstroke Patients")
+# plt.xlabel("Discomfort Index")
+# plt.ylabel("Number of Heatstroke Patients")
+# plt.legend()
+# plt.show()
 
 #__________________________21.월_________________________________________________________
 #
@@ -123,20 +140,6 @@ with pd.option_context('display.max_columns', None):  # 모든 열을 출력
 # plt.legend()
 # plt.show()
 
-#__________________________11.최소상대습도(%)_________________________________________________________
-
-# # X와 Y 설정
-# X5 = data['11최소상대습도(%)']
-# Y5 = data['2이송 인원']
-#
-# # 데이터 분포 시각화 (전체 데이터)
-# plt.figure(figsize=(10, 6))
-# plt.scatter(X5, Y5, color='LightPink', label='Actual Data Points', marker='*', s=30, alpha=0.5)
-# plt.title("Average Humidity(%) vs Number of Heatstroke Patients")
-# plt.xlabel("Average Humidity(%)")
-# plt.ylabel("Number of Heatstroke Patients")
-# plt.legend()
-# plt.show()
 
 #__________________________10.강수량합계_________________________________________________________
 #
