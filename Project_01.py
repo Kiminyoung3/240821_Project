@@ -54,6 +54,36 @@ with pd.option_context('display.max_columns', None):  # 모든 열을 출력
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error, r2_score
+
+#그레이디언트 부스팅 회귀
+# 데이터 준비
+X = df[['3최고기온', '4평균기온', '9평균습도(%)', '10강수량합계(mm)', '12합계 전천 일사량(MJ/m^2)',
+        '18최고-최저 기온차', '19체감온도', '20불쾌지수', '21월']]  # 독립변수
+y = df['2이송 인원']  # 종속변수
+
+# 데이터 분할
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# 모델 훈련
+model = GradientBoostingRegressor(n_estimators=100, random_state=42)
+model.fit(X_train, y_train)
+
+# 예측
+y_pred = model.predict(X_test)
+
+# 평가
+print("Mean Squared Error:", mean_squared_error(y_test, y_pred))
+print("R^2 Score:", r2_score(y_test, y_pred))
+
+# 예측 결과 시각화
+plt.figure(figsize=(10, 6))
+plt.scatter(y_test, y_pred, color='red', alpha=0.5)
+plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], color='blue', linewidth=2)
+plt.xlabel('Actual')
+plt.ylabel('Predicted')
+plt.title('Actual vs Predicted')
+plt.show()
+
 #랜덤포레스트 회귀
 # # 데이터 준비
 # X = df[['Feature1', 'Feature2', 'Feature3', ..., 'Feature11']]  # 독립변수
@@ -64,26 +94,6 @@ from sklearn.metrics import mean_squared_error, r2_score
 #
 # # 모델 훈련
 # model = RandomForestRegressor(n_estimators=100, random_state=42)
-# model.fit(X_train, y_train)
-#
-# # 예측
-# y_pred = model.predict(X_test)
-#
-# # 평가
-# print("Mean Squared Error:", mean_squared_error(y_test, y_pred))
-# print("R^2 Score:", r2_score(y_test, y_pred))
-
-
-#그레이디언트 부스팅 회귀
-# # 데이터 준비
-# X = df[['Feature1', 'Feature2', 'Feature3', ..., 'Feature11']]  # 독립변수
-# y = df['Heatstroke Cases']  # 종속변수
-#
-# # 데이터 분할
-# X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-#
-# # 모델 훈련
-# model = GradientBoostingRegressor(n_estimators=100, random_state=42)
 # model.fit(X_train, y_train)
 #
 # # 예측
