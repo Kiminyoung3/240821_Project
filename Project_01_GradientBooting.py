@@ -44,12 +44,12 @@ process_datetime(test_df)
 # 5. 데이터 전처리
 # 훈련 데이터에서 필요한 열 선택
 X_train = train_df[['Year', 'Month', 'Day', 'Hour', '3최고기온', '4평균기온', '9평균습도(%)',
-                    '10강수량합계(mm)', '18최고-최저 기온차', '19체감온도', '20불쾌지수', '39전일의 이송 인원수']]
+                    '10강수량합계(mm)', '18최고-최저 기온차', '19체감온도', '20불쾌지수']]
 y_train = train_df['2이송 인원']
 
 # 테스트 데이터에서 필요한 열 선택
 X_test = test_df[['Year', 'Month', 'Day', 'Hour', '3최고기온', '4평균기온', '9평균습도(%)',
-                  '10강수량합계(mm)', '18최고-최저 기온차', '19체감온도', '20불쾌지수', '39전일의 이송 인원수']]
+                  '10강수량합계(mm)', '18최고-최저 기온차', '19체감온도', '20불쾌지수']]
 y_test = test_df['2이송 인원']
 
 # 스케일링 (옵션, 선택적으로 적용할 수 있음)
@@ -58,6 +58,7 @@ X_train = scaler.fit_transform(X_train)
 X_test = scaler.transform(X_test)
 
 # 6. 모델 훈련
+# 그래디언트부스팅 회귀(비선형)
 model = GradientBoostingRegressor(n_estimators=100, random_state=42)
 model.fit(X_train, y_train)
 
