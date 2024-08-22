@@ -47,187 +47,162 @@ with pd.option_context('display.max_columns', None):  # 모든 열을 출력
     print("Sorted by '1날짜 및 시간':")
     print(sorted_df_by_transport.head())
 
-#__________________________23.주말 및 공휴일_________________________________________________________
-#
-# # X와 Y 설정
-# X5 = data['39전일의 이송 인원수']
-# Y5 = data['2이송 인원']
-#
-# # 데이터 분포 시각화 (전체 데이터)
-# plt.figure(figsize=(10, 6))
-# plt.scatter(X5, Y5, color='LightPink', label='Actual Data Points', marker='*', s=30, alpha=0.5)
-# plt.title("Discomfort Index vs Number of Heatstroke Patients")
-# plt.xlabel("Discomfort Index")
-# plt.ylabel("Number of Heatstroke Patients")
-# plt.legend()
-# plt.show()
+#__________________________1.날짜_________________________________________________________
 
-#__________________________21.월_________________________________________________________
-#
-# # X와 Y 설정
-# X5 = data['21월']
-# Y5 = data['2이송 인원']
-#
-# # 데이터 분포 시각화 (전체 데이터)
-# plt.figure(figsize=(10, 6))
-# plt.scatter(X5, Y5, color='LightPink', label='Actual Data Points', marker='*', s=30, alpha=0.5)
-# plt.title("Discomfort Index vs Number of Heatstroke Patients")
-# plt.xlabel("Discomfort Index")
-# plt.ylabel("Number of Heatstroke Patients")
-# plt.legend()
-# plt.show()
+# 날짜 및 시간 데이터를 datetime 형식으로 변환 (명시적으로 형식 지정)
+data['1날짜 및 시간'] = pd.to_datetime(data['1날짜 및 시간'], format='%m/%d/%Y %I:%M:%S %p')
 
-#__________________________20.불쾌지수_________________________________________________________
-#
-# # X와 Y 설정
-# X5 = data['20불쾌지수']
-# Y5 = data['2이송 인원']
-#
-# # 데이터 분포 시각화 (전체 데이터)
-# plt.figure(figsize=(10, 6))
-# plt.scatter(X5, Y5, color='LightPink', label='Actual Data Points', marker='*', s=30, alpha=0.5)
-# plt.title("Discomfort Index vs Number of Heatstroke Patients")
-# plt.xlabel("Discomfort Index")
-# plt.ylabel("Number of Heatstroke Patients")
-# plt.legend()
-# plt.show()
+# X와 Y 설정
+X1 = data['1날짜 및 시간']
+Y1 = data['2이송 인원']
 
-#__________________________19.체감온도_________________________________________________________
-#
-# # X와 Y 설정
-# X5 = data['19체감온도']
-# Y5 = data['2이송 인원']
-#
-# # 데이터 분포 시각화 (전체 데이터)
-# plt.figure(figsize=(10, 6))
-# plt.scatter(X5, Y5, color='LightPink', label='Actual Data Points', marker='*', s=30, alpha=0.5)
-# plt.title("Apparent Temperature vs Number of Heatstroke Patients")
-# plt.xlabel("Apparent Temperature")
-# plt.ylabel("Number of Heatstroke Patients")
-# plt.legend()
-# plt.show()
+# 데이터 분포 시각화 (전체 데이터)
+plt.figure(figsize=(10, 6))
+plt.scatter(X1, Y1, color='LightPink', label='Actual Data Points', marker='*', s=30, alpha=0.5)
+plt.title("Date and Time vs Number of Heatstroke Patients")
+plt.xlabel("Date(12:00 AM)")
+plt.ylabel("Number of Heatstroke Patients")
+plt.xticks(rotation=45)  # 날짜가 겹치지 않도록 회전
+plt.legend()
+plt.savefig('./result/1_Date_and_Time.png')
+plt.show()
 
-#__________________________18.최고-최저 기온차_________________________________________________________
+#--------------------------------------------------------------------------
+# Convert '1날짜 및 시간' to datetime format (if not already done)
+data['1날짜 및 시간'] = pd.to_datetime(data['1날짜 및 시간'], format='%m/%d/%Y %I:%M:%S %p')
 
-# # X와 Y 설정
-# X5 = data['18최고-최저 기온차']
-# Y5 = data['2이송 인원']
-#
-# # 데이터 분포 시각화 (전체 데이터)
-# plt.figure(figsize=(10, 6))
-# plt.scatter(X5, Y5, color='LightPink', label='Actual Data Points', marker='*', s=30, alpha=0.5)
-# plt.title("Temperature Difference (High-Low) vs Number of Heatstroke Patients")
-# plt.xlabel("Temperature Difference (High-Low)")
-# plt.ylabel("Number of Heatstroke Patients")
-# plt.legend()
-# plt.show()
+# Extract the month from '1날짜 및 시간' and create a new column 'Month'
+data['Month'] = data['1날짜 및 시간'].dt.month
 
+# Now, data is categorized by month in the 'Month' column
+# You can display the first few rows to verify the new column
+print(data[['1날짜 및 시간', 'Month']].head())
 
-#__________________________12.합계 전천 일사량(MJ/m^2)_________________________________________________________
-#
-# # X와 Y 설정
-# X5 = data['12합계 전천 일사량(MJ/m^2)']
-# Y5 = data['2이송 인원']
-#
-# # 데이터 분포 시각화 (전체 데이터)
-# plt.figure(figsize=(10, 6))
-# plt.scatter(X5, Y5, color='LightPink', label='Actual Data Points', marker='*', s=30, alpha=0.5)
-# plt.title("Total Solar Radiation (MJ/m^2) vs Number of Heatstroke Patients")
-# plt.xlabel("Total Solar Radiation (MJ/m^2)")
-# plt.ylabel("Number of Heatstroke Patients")
-# plt.legend()
-# plt.show()
+# Example: Group by month and calculate the total number of heatstroke patients transported each month
+monthly_transport_sum = data.groupby('Month')['2이송 인원'].sum()
 
-#__________________________11.최소상대습도(%)_________________________________________________________
+# Print the result to see the total transported patients per month
+print("Total Number of Heatstroke Patients Transported Each Month:")
+print(monthly_transport_sum)
 
-# # X와 Y 설정
-# X5 = data['11최소상대습도(%)']
-# Y5 = data['2이송 인원']
-#
-# # 데이터 분포 시각화 (전체 데이터)
-# plt.figure(figsize=(10, 6))
-# plt.scatter(X5, Y5, color='LightPink', label='Actual Data Points', marker='*', s=30, alpha=0.5)
-# plt.title("Average Humidity(%) vs Number of Heatstroke Patients")
-# plt.xlabel("Average Humidity(%)")
-# plt.ylabel("Number of Heatstroke Patients")
-# plt.legend()
-# plt.show()
-
-#__________________________10.강수량합계_________________________________________________________
-#
-# # X와 Y 설정
-# X5 = data['10강수량합계(mm)']
-# Y5 = data['2이송 인원']
-#
-# # 데이터 분포 시각화 (전체 데이터)
-# plt.figure(figsize=(10, 6))
-# plt.scatter(X5, Y5, color='LightPink', label='Actual Data Points', marker='*', s=30, alpha=0.5)
-# plt.title("Average Humidity(%) vs Number of Heatstroke Patients")
-# plt.xlabel("Average Humidity(%)")
-# plt.ylabel("Number of Heatstroke Patients")
-# plt.legend()
-# plt.show()
-
-#__________________________9.평균습도_________________________________________________________
-
-# # X와 Y 설정
-# X5 = data['9평균습도(%)']
-# Y5 = data['2이송 인원']
-#
-# # 데이터 분포 시각화 (전체 데이터)
-# plt.figure(figsize=(10, 6))
-# plt.scatter(X5, Y5, color='LightPink', label='Actual Data Points', marker='*', s=30, alpha=0.5)
-# plt.title("Average Humidity(%) vs Number of Heatstroke Patients")
-# plt.xlabel("Average Humidity(%)")
-# plt.ylabel("Number of Heatstroke Patients")
-# plt.legend()
-# plt.show()
-
-#__________________________4.평균기온_________________________________________________________
-#
-# # X와 Y 설정
-# X4 = data['4평균기온']
-# Y4 = data['2이송 인원']
-#
-# # 데이터 분포 시각화 (전체 데이터)
-# plt.figure(figsize=(10, 6))
-# plt.scatter(X4, Y4, color='LightPink', label='Actual Data Points', marker='*', s=30, alpha=0.5)
-# plt.title("Highest Temperature vs Number of Heatstroke Patients")
-# plt.xlabel("Highest Temperature")
-# plt.ylabel("Number of Heatstroke Patients")
-# plt.legend()
-# plt.show()
+# If you want to plot the data
+plt.figure(figsize=(10, 6))
+monthly_transport_sum.plot(kind='bar', color='LightPink')
+plt.title("Total Number of Heatstroke Patients Transported Each Month")
+plt.xlabel("Month")
+plt.ylabel("Number of Heatstroke Patients")
+plt.xticks(rotation=0)  # Rotate x labels for better readability
+plt.savefig('./result/1_2_Monthly_Transported_Patients.png')
+plt.show()
 
 #__________________________3.최고기온_________________________________________________________
 
-# # X와 Y 설정
-# X2 = data['3최고기온']
-# Y2 = data['2이송 인원']
-#
-# # 데이터 분포 시각화 (전체 데이터)
-# plt.figure(figsize=(10, 6))
-# plt.scatter(X2, Y2, color='LightPink', label='Actual Data Points', marker='*', s=30, alpha=0.5)
-# plt.title("Highest Temperature vs Number of Heatstroke Patients")
-# plt.xlabel("Highest Temperature")
-# plt.ylabel("Number of Heatstroke Patients")
-# plt.legend()
-# plt.show()
+# X와 Y 설정
+X2 = data['3최고기온']
+Y2 = data['2이송 인원']
 
-#__________________________1.날짜_________________________________________________________
+# 데이터 분포 시각화 (전체 데이터)
+plt.figure(figsize=(10, 6))
+plt.scatter(X2, Y2, color='LightPink', label='Actual Data Points', marker='*', s=30, alpha=0.5)
+plt.title("Highest Temperature vs Number of Heatstroke Patients")
+plt.xlabel("Highest Temperature (℃)")
+plt.ylabel("Number of Heatstroke Patients")
+plt.legend()
+plt.savefig('./result/3_Highest_Temperature.png')
+plt.show()
 
-# # 날짜 및 시간 데이터를 datetime 형식으로 변환 (명시적으로 형식 지정)
-# data['날짜 및 시간'] = pd.to_datetime(data['날짜 및 시간'], format='%m/%d/%Y %I:%M:%S %p')
-#
-# # X와 Y 설정
-# X1 = data['1날짜 및 시간']
-# Y1 = data['2이송 인원']
-#
-# # 데이터 분포 시각화 (전체 데이터)
-# plt.figure(figsize=(10, 6))
-# plt.scatter(X1, Y1, color='LightPink', label='Actual Data Points', marker='*', s=30, alpha=0.5)
-# plt.title("Date vs Number of Heatstroke Patients")
-# plt.xlabel("Date(12:00 AM)")
-# plt.ylabel("Number of Heatstroke Patients")
-# plt.xticks(rotation=45)  # 날짜가 겹치지 않도록 회전
-# plt.legend()
-# plt.show()
+#__________________________4.평균기온_________________________________________________________
+
+# X와 Y 설정
+X4 = data['4평균기온']
+Y4 = data['2이송 인원']
+
+# 데이터 분포 시각화 (전체 데이터)
+plt.figure(figsize=(10, 6))
+plt.scatter(X4, Y4, color='LightPink', label='Actual Data Points', marker='*', s=30, alpha=0.5)
+plt.title("Average Temperature vs Number of Heatstroke Patients")
+plt.xlabel("Average Temperature (℃)")
+plt.ylabel("Number of Heatstroke Patients")
+plt.legend()
+plt.savefig('./result/4_Average_Temperature.png')
+plt.show()
+
+#__________________________9.평균습도_________________________________________________________
+
+# X와 Y 설정
+X5 = data['9평균습도(%)']
+Y5 = data['2이송 인원']
+
+# 데이터 분포 시각화 (전체 데이터)
+plt.figure(figsize=(10, 6))
+plt.scatter(X5, Y5, color='LightPink', label='Actual Data Points', marker='*', s=30, alpha=0.5)
+plt.title("Average Humidity(%) vs Number of Heatstroke Patients")
+plt.xlabel("Average Humidity(%)")
+plt.ylabel("Number of Heatstroke Patients")
+plt.legend()
+plt.savefig('./result/9_Average_Humidity.png')
+plt.show()
+
+#__________________________10.강수량합계_________________________________________________________
+
+# X와 Y 설정
+X5 = data['10강수량합계(mm)']
+Y5 = data['2이송 인원']
+
+# 데이터 분포 시각화 (전체 데이터)
+plt.figure(figsize=(10, 6))
+plt.scatter(X5, Y5, color='LightPink', label='Actual Data Points', marker='*', s=30, alpha=0.5)
+plt.title("Total Precipitation vs Number of Heatstroke Patients")
+plt.xlabel("Total Precipitation (mm)")
+plt.ylabel("Number of Heatstroke Patients")
+plt.legend()
+plt.savefig('./result/10_Total_Precipitation.png')
+plt.show()
+
+#__________________________18.최고-최저 기온차_________________________________________________________
+
+# X와 Y 설정
+X5 = data['18최고-최저 기온차']
+Y5 = data['2이송 인원']
+
+# 데이터 분포 시각화 (전체 데이터)
+plt.figure(figsize=(10, 6))
+plt.scatter(X5, Y5, color='LightPink', label='Actual Data Points', marker='*', s=30, alpha=0.5)
+plt.title("Temperature Difference (High-Low) vs Number of Heatstroke Patients")
+plt.xlabel("Temperature Difference (High-Low)")
+plt.ylabel("Number of Heatstroke Patients")
+plt.legend()
+plt.savefig('./result/18_Temperature_Difference.png')
+plt.show()
+
+#__________________________19.체감온도_________________________________________________________
+
+# X와 Y 설정
+X5 = data['19체감온도']
+Y5 = data['2이송 인원']
+
+# 데이터 분포 시각화 (전체 데이터)
+plt.figure(figsize=(10, 6))
+plt.scatter(X5, Y5, color='LightPink', label='Actual Data Points', marker='*', s=30, alpha=0.5)
+plt.title("Apparent Temperature vs Number of Heatstroke Patients")
+plt.xlabel("Apparent Temperature (℃)")
+plt.ylabel("Number of Heatstroke Patients")
+plt.legend()
+plt.savefig('./result/19_Apparent_Temperature.png')
+plt.show()
+
+#__________________________20.불쾌지수_________________________________________________________
+
+# X와 Y 설정
+X5 = data['20불쾌지수']
+Y5 = data['2이송 인원']
+
+# 데이터 분포 시각화 (전체 데이터)
+plt.figure(figsize=(10, 6))
+plt.scatter(X5, Y5, color='LightPink', label='Actual Data Points', marker='*', s=30, alpha=0.5)
+plt.title("Discomfort Index vs Number of Heatstroke Patients")
+plt.xlabel("Discomfort Index")
+plt.ylabel("Number of Heatstroke Patients")
+plt.legend()
+plt.savefig('./result/20_Discomfort_Index.png')
+plt.show()
