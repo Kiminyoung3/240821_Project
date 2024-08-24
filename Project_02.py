@@ -3,10 +3,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib
 import seaborn as sns
-from sklearn.model_selection import train_test_split, KFold
-from sklearn.ensemble import GradientBoostingRegressor
+from sklearn.model_selection import train_test_split, KFold, GridSearchCV
+from sklearn.ensemble import GradientBoostingRegressor, RandomForestRegressor
 from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
 from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import learning_curve, validation_curve
 sns.set_theme(style='darkgrid')
 
 # 1. 훈련 데이터 로드
@@ -36,7 +37,6 @@ test_header = ['1날짜 및 시간', '2이송 인원', '3최고기온', '4평균
 train_df.columns = train_header
 test_df.columns = test_header
 
-
 # 4. 날짜 및 시간 열 변환
 def process_datetime(df):
     df['1날짜 및 시간'] = pd.to_datetime(df['1날짜 및 시간'], format='%m/%d/%Y %I:%M:%S %p')
@@ -45,7 +45,6 @@ def process_datetime(df):
     df['Day'] = df['1날짜 및 시간'].dt.day
     df['Hour'] = df['1날짜 및 시간'].dt.hour
     df.drop(columns=['1날짜 및 시간'], inplace=True)  # 원본 열 삭제
-
 
 process_datetime(train_df)
 process_datetime(test_df)
@@ -67,18 +66,34 @@ X_train = scaler.fit_transform(X_train)
 X_test = scaler.transform(X_test)
 
 # 6. KFold 교차검증 설정 및 모델 훈련
-# 데이터를 5개의 폴드로 나누고 각 폴드를 검증
 kf = KFold(n_splits=5, shuffle=True, random_state=42)
 mse_list = []
 rmse_list = []
 mae_list = []
 r2_list = []
 
+# 하이퍼파라미터 튜닝을 위한 GridSearchCV
+param_grid = {
+    'n_estimators': [100, 200],
+    'learning_rate': [0.01, 0.1, 0.2],
+    'max_depth': [3, 5, 7]
+}
+
+grid_search = GridSearchCV(GradientBoostingRegressor(random_state=42), param_grid, cv=kf, scoring='neg_mean_squared_error')
+grid_search.fit(X_train, y_train)
+best_params = grid_search.best_params_
+
+print(f"Best parameters from GridSearchCV: {best_params}")
+
+# 모델 훈련 및 평가
 for train_index, val_index in kf.split(X_train):
     X_train_fold, X_val_fold = X_train[train_index], X_train[val_index]
     y_train_fold, y_val_fold = y_train.iloc[train_index], y_train.iloc[val_index]
 
-    model = GradientBoostingRegressor(n_estimators=100, random_state=42)
+    model = GradientBoostingRegressor(n_estimators=best_params['n_estimators'],
+                                      learning_rate=best_params['learning_rate'],
+                                      max_depth=best_params['max_depth'],
+                                      random_state=42)
     model.fit(X_train_fold, y_train_fold)
 
     y_val_pred = model.predict(X_val_fold)
@@ -97,7 +112,10 @@ print(f'KFold Cross-Validation R^2: {np.mean(r2_list):.2f}')
 print('\n')
 
 # 7. 전체 훈련 데이터로 모델 훈련
-model = GradientBoostingRegressor(n_estimators=100, random_state=42)
+model = GradientBoostingRegressor(n_estimators=best_params['n_estimators'],
+                                  learning_rate=best_params['learning_rate'],
+                                  max_depth=best_params['max_depth'],
+                                  random_state=42)
 model.fit(X_train, y_train)
 
 # 8. 예측
@@ -127,10 +145,10 @@ matplotlib.rcParams['font.family'] = 'Malgun Gothic'
 matplotlib.rcParams['axes.unicode_minus'] = False    # 음수 기호 깨짐 방지
 
 # 필터링된 데이터 생성 (값이 20 이상 160 이하인 것만 포함)
-filtered_indices = [i for i in range(len(y_test)) if 20 <= y_test[i] <= 160 and 20 <= y_test_pred[i] <= 160]
-filtered_actual = [y_test[i] for i in filtered_indices]
+filtered_indices = [i for i in range(len(y_test)) if 20 <= y_test.iloc[i] <= 160 and 20 <= y_test_pred[i] <= 160]
+filtered_actual = [y_test.iloc[i] for i in filtered_indices]
 filtered_predicted = [y_test_pred[i] for i in filtered_indices]
-filtered_errors = [y_test[i] - y_test_pred[i] for i in filtered_indices]
+filtered_errors = [y_test.iloc[i] - y_test_pred[i] for i in filtered_indices]
 
 # 색상 설정
 color_actual = 'orange'
@@ -173,7 +191,57 @@ plt.xlabel('오차')
 plt.ylabel('빈도')
 plt.title('오차 분포 (히스토그램)')
 
-
 plt.tight_layout()
 plt.savefig('./result/GradientBoosting_result.png')
+plt.show()
+
+# 12. 추가 모델 (Random Forest) 훈련 및 평가
+rf_model = RandomForestRegressor(n_estimators=100, random_state=42)
+rf_model.fit(X_train, y_train)
+y_test_pred_rf = rf_model.predict(X_test)
+
+# RandomForest 성능 평가
+mse_rf = mean_squared_error(y_test, y_test_pred_rf)
+rmse_rf = np.sqrt(mse_rf)
+mae_rf = mean_absolute_error(y_test, y_test_pred_rf)
+r2_rf = r2_score(y_test, y_test_pred_rf)
+
+print("-----Random Forest 성능평가 결과-----")
+print(f'MSE: {mse_rf:.2f}')
+print(f'RMSE: {rmse_rf:.2f}')
+print(f'MAE: {mae_rf:.2f}')
+print(f'R^2: {r2_rf:.2f}')
+
+# 13. 학습곡선 및 검증곡선 시각화
+train_sizes, train_scores, test_scores = learning_curve(GradientBoostingRegressor(n_estimators=best_params['n_estimators'],
+                                                                                 learning_rate=best_params['learning_rate'],
+                                                                                 max_depth=best_params['max_depth'],
+                                                                                 random_state=42),
+                                                        X_train, y_train, cv=kf, scoring='neg_mean_squared_error', n_jobs=-1)
+
+plt.figure(figsize=(18, 6))
+
+# 학습곡선
+plt.subplot(1, 2, 1)
+plt.plot(train_sizes, -train_scores.mean(axis=1), 'o-', color='r', label='Training error')
+plt.plot(train_sizes, -test_scores.mean(axis=1), 'o-', color='g', label='Validation error')
+plt.title('Learning Curve')
+plt.xlabel('Training examples')
+plt.ylabel('MSE')
+plt.legend()
+
+# 검증곡선
+param_range = [100, 200]
+train_scores, test_scores = validation_curve(GradientBoostingRegressor(random_state=42), X_train, y_train, param_name='n_estimators', param_range=param_range, cv=kf, scoring='neg_mean_squared_error', n_jobs=-1)
+
+plt.subplot(1, 2, 2)
+plt.plot(param_range, -train_scores.mean(axis=1), 'o-', color='r', label='Training error')
+plt.plot(param_range, -test_scores.mean(axis=1), 'o-', color='g', label='Validation error')
+plt.title('Validation Curve')
+plt.xlabel('Number of Estimators')
+plt.ylabel('MSE')
+plt.legend()
+
+plt.tight_layout()
+plt.savefig('./result/Learning_Validation_Curves.png')
 plt.show()

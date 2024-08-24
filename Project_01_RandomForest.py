@@ -89,7 +89,7 @@ for train_index, val_index in kf.split(X_train):
     r2_list.append(r2_score(y_val_fold, y_val_pred))
 
 # 최종 평균 출력
-print("-----KFold 교차검증 결과-----")
+print("-----Random Forest KFold 교차검증 결과-----")
 print(f'KFold Cross-Validation MSE: {np.mean(mse_list):.2f}')
 print(f'KFold Cross-Validation RMSE: {np.mean(rmse_list):.2f}')
 print(f'KFold Cross-Validation MAE: {np.mean(mae_list):.2f}')
@@ -109,7 +109,7 @@ rmse = np.sqrt(mse)
 mae = mean_absolute_error(y_test, y_test_pred)
 r2 = r2_score(y_test, y_test_pred)
 
-print("-----성능평가 결과-----")
+print("-----Random Forest 성능평가 결과-----")
 print(f'MSE: {mse:.2f}')
 print(f'RMSE: {rmse:.2f}')
 print(f'MAE: {mae:.2f}')
