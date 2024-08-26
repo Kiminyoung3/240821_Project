@@ -138,7 +138,7 @@ color_predicted = '#2ca02c'  # Green
 color_error = '#9467bd'  # Purple
 color_diagonal = 'Coral'  # (Same as actual values for consistency)
 
-# 1. 산점도 그래프
+# 11-1. 산점도 그래프
 plt.subplot(2, 2, 1)
 plt.scatter(filtered_actual, filtered_predicted, alpha=0.5, color=color_predicted)
 # 대각선 그리기
@@ -148,7 +148,7 @@ plt.xlabel('실제 열사병 이송 환자 수')
 plt.ylabel('예측 열사병 이송 환자 수')
 plt.title('Random Forest 회귀 모델에 따른 실제와 예측 환자 수 비교1')
 
-# 2. 실제 값과 예측 값의 분포를 비교하는 히스토그램
+# 11-2. 실제 값과 예측 값의 분포를 비교하는 히스토그램
 plt.subplot(2, 2, 2)
 sns.histplot(filtered_actual, color=color_actual, label='실제 값', kde=True, stat='density', linewidth=0, bins=30)
 sns.histplot(filtered_predicted, color=color_predicted, label='예측 값', kde=True, stat='density', linewidth=0, bins=30)
@@ -157,7 +157,7 @@ plt.ylabel('밀도')
 plt.title('Random Forest 회귀 모델에 따른 실제와 예측 환자 수 비교2')
 plt.legend()
 
-# 3. 실제 값과 예측 값의 시간에 따른 변화 (선 그래프)
+# 11-3. 실제 값과 예측 값의 시간에 따른 변화 (선 그래프)
 plt.subplot(2, 2, 3)
 plt.plot(range(len(filtered_actual)), filtered_actual, label='실제 값', linestyle='-', marker='o', color=color_actual)
 plt.plot(range(len(filtered_predicted)), filtered_predicted, label='예측 값', linestyle='--', marker='x', color=color_predicted)
@@ -166,7 +166,7 @@ plt.ylabel('열사병 이송 환자 수')
 plt.title('시간에 따른 실제 값과 예측 값')
 plt.legend()
 
-# 4. 오차 분포의 히스토그램
+# 11-4. 오차 분포의 히스토그램
 plt.subplot(2, 2, 4)
 sns.histplot(filtered_errors, bins=30, kde=True, color=color_error)
 plt.xlabel('오차')
