@@ -37,7 +37,7 @@ train_df.columns = train_header
 test_df.columns = test_header
 
 
-# 4. 날짜 및 시간 열 변환
+# 4. '1날짜 및 시간' 열 변환(연, 월, 일, 시간으로 분할)
 def process_datetime(df):
     df['1날짜 및 시간'] = pd.to_datetime(df['1날짜 및 시간'], format='%m/%d/%Y %I:%M:%S %p')
     df['Year'] = df['1날짜 및 시간'].dt.year
@@ -53,7 +53,8 @@ process_datetime(test_df)
 # 5. 데이터 전처리
 # 훈련 데이터에서 필요한 열 선택
 X_train = train_df[['Year', 'Month', 'Day', '3최고기온', '4평균기온', '9평균습도(%)',
-                    '10강수량합계(mm)', '18최고-최저 기온차', '19체감온도', '20불쾌지수', '39전일의 이송 인원수', '40이송 인원수 이동 평균(5일간)']]
+                    '10강수량합계(mm)', '18최고-최저 기온차', '19체감온도', '20불쾌지수',
+                    '39전일의 이송 인원수', '40이송 인원수 이동 평균(5일간)']]
 y_train = train_df['2이송 인원']
 
 # 테스트 데이터에서 필요한 열 선택

@@ -17,6 +17,34 @@ train_header = ['1날짜 및 시간', '2이송 인원', '3최고기온', '4평�
 
 train_df.columns = train_header
 
+# 4. 날짜 및 시간 열 변환
+def process_datetime(df):
+    df['1날짜 및 시간'] = pd.to_datetime(df['1날짜 및 시간'], format='%m/%d/%Y %I:%M:%S %p')
+    df['Year'] = df['1날짜 및 시간'].dt.year
+    df['Month'] = df['1날짜 및 시간'].dt.month
+    df['Day'] = df['1날짜 및 시간'].dt.day
+    df['Hour'] = df['1날짜 및 시간'].dt.hour
+    df.drop(columns=['1날짜 및 시간'], inplace=True)  # 원본 열 삭제
+
+# Year
+X = train_df['Year']
+Y = train_df['2이송 인원']
+
+# result 디렉토리 생성
+output_dir = './result'
+os.makedirs(output_dir, exist_ok=True)
+
+# 최고기온과 이송 인원의 관계를 나타내는 산점도와 회귀선
+plt.figure(figsize=(10, 6))
+sns.regplot(x=X, y=Y, scatter_kws={'color':'b', 's':10, 'alpha':0.5}, line_kws={'color':'r'}, marker='o')
+plt.title("Highest Temperature vs Number of Heatstroke Patients with Regression Line")
+plt.xlabel("Highest Temperature (℃)")
+plt.ylabel("Number of Heatstroke Patients")
+plt.grid(True)
+plt.savefig(os.path.join(output_dir, 'Highest_Temperature.png'))
+plt.show()
+
+
 # 3.최고온도
 X2 = train_df['3최고기온']
 Y2 = train_df['2이송 인원']
@@ -129,9 +157,9 @@ plt.show()
 # -------------------------------------------통합그래프------------------------------------------------
 
 # 사용할 컬럼(속성) 이름 지정
-column_names = ['3최고기온', '4평균기온', '9평균습도(%)',
-                '10강수량합계(mm)', '18최고-최저 기온차', '19체감온도',
-                '20불쾌지수', '39전일의 이송 인원수']
+column_names = ['Year', 'Month', 'Day', '3최고기온', '4평균기온', '9평균습도(%)',
+                    '10강수량합계(mm)', '18최고-최저 기온차', '19체감온도', '20불쾌지수',
+                    '39전일의 이송 인원수', '40이송 인원수 이동 평균(5일간)']
 
 # 색상 목록 정의
 colors = ['blue', 'green', 'red', 'purple', 'orange', 'cyan', 'magenta', 'brown']
@@ -150,5 +178,3 @@ for j in range(i + 1, 9):
 
 # 제목을 그래프 아래쪽에 추가
 fig.suptitle("Density Plots of Various Features", y=0.02, fontsize=16)
-
-# 그래프
