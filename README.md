@@ -53,7 +53,7 @@
 
 
 
-### Gradient Boosting
+## Gradient Boosting
 장점: 비선형 관계를 잘 모델링할 수 있으며, 높은 정확도를 제공하고 과적합을 방지
 성능 지표:
 
