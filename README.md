@@ -2,7 +2,7 @@
     <img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=300&section=header&text=Heat?%20Hit!&fontSize=90&animation=fadeIn&fontAlignY=38&desc=일일%20열사병%20예측%20프로그램%20%7C%20현대건설%20기술교육원%20Smart%20안전학과&descAlignY=75&descAlign=62"/>
 </p>
 
-> 조장 : 김인영 / 조원 : 최미선,정유진,이성준
+<p style="font-size: 20px;"> > 조장 : 김인영 / 조원 : 최미선,정유진,이성준
 
 
 ## 프로젝트 명 : Heat ? Hit !
