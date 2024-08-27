@@ -4,6 +4,14 @@
 
 > 조장 : 김인영 / 조원 : 최미선, 정유진, 이성준
 
+<div style="text-align: left;"> 
+    <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;">  </h2>  
+    <div style="font-weight: 700; font-size: 15px; text-align: left; color: #282d33;">  </div> 
+    </div>
+    
+
+
+
 # 프로젝트 명 : Heat ? Hit !
 
 프로젝트 설명: 열사병 환자 예측 모델 개발
