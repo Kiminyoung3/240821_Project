@@ -4,7 +4,7 @@
 
 조장 : 김인영 / 조원 : 최미선, 정유진, 이성준
 > Supports simple [Generator](https://capsule-render.vercel.app/).
-> However, we recommend reading the README for more detailed adjustments.
+> 조장 : 김인영 / 조원 : 최미선, 정유진, 이성준
 
 # 프로젝트 명 : Heat ? Hit !
 
