@@ -191,3 +191,5 @@ Gradient Boosting 모델이 Random Forest 모델보다 전체적으로 더 우�
 #### 기후 변화와 날씨 변동성을 고려하여, 최신 기후 데이터를 반영하고 장기적인 기후 트렌드를 모델에 통합하는 것이 필요하다. 
 
 예측 모델에 최신 기후 데이터와 변동성 요소를 추가하고, 기후 변화에 대한 적응력을 높이기 위해 주기적인 모델 업데이트를 수행하여 불확실성을 줄일 수 있을 것으로 보인다.
+
+![Footer](https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=footer)
