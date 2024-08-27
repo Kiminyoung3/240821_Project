@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import matplotlib
 import seaborn as sns
 from sklearn.model_selection import train_test_split, KFold
-from sklearn.ensemble import GradientBoostingRegressor, RandomForestRegressor
+from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
 from sklearn.preprocessing import StandardScaler
 sns.set_theme(style='darkgrid')
@@ -52,12 +52,12 @@ process_datetime(test_df)
 
 # 5. 데이터 전처리
 # 훈련 데이터에서 필요한 열 선택
-X_train = train_df[['Month', 'Day', '3최고기온', '4평균기온', '9평균습도(%)',
+X_train = train_df[['Year', 'Month', 'Day', '3최고기온', '4평균기온', '9평균습도(%)',
                     '10강수량합계(mm)', '18최고-최저 기온차', '19체감온도', '20불쾌지수', '39전일의 이송 인원수', '40이송 인원수 이동 평균(5일간)']]
 y_train = train_df['2이송 인원']
 
 # 테스트 데이터에서 필요한 열 선택
-X_test = test_df[['Month', 'Day', '3최고기온', '4평균기온', '9평균습도(%)',
+X_test = test_df[['Year', 'Month', 'Day', '3최고기온', '4평균기온', '9평균습도(%)',
                   '10강수량합계(mm)', '18최고-최저 기온차', '19체감온도', '20불쾌지수', '39전일의 이송 인원수', '40이송 인원수 이동 평균(5일간)']]
 y_test = test_df['2이송 인원']
 
@@ -78,7 +78,7 @@ for train_index, val_index in kf.split(X_train):
     X_train_fold, X_val_fold = X_train[train_index], X_train[val_index]
     y_train_fold, y_val_fold = y_train.iloc[train_index], y_train.iloc[val_index]
 
-    model = GradientBoostingRegressor(n_estimators=100, random_state=42)
+    model = RandomForestRegressor(n_estimators=100, random_state=42)
     model.fit(X_train_fold, y_train_fold)
 
     y_val_pred = model.predict(X_val_fold)

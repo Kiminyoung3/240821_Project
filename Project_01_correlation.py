@@ -71,7 +71,7 @@ for j in range(len(features), len(axes)):
     fig.delaxes(axes[j])
 
 plt.tight_layout()
-plt.suptitle("열사병 환자 이송 인원수와의 각 상관관계 그래프", y=1.02, fontsize=20)
+plt.suptitle("Heatstroke Patient Transportation Counts vs Features", y=1.02, fontsize=20)
 plt.savefig(os.path.join(output_dir, 'combined_scatter_plots.png'))
 plt.show()
 
@@ -93,7 +93,7 @@ for i, col in enumerate(column_names):
 for j in range(len(column_names), len(axes)):
     fig.delaxes(axes[j])
 
-fig.suptitle("특성별 밀도 플롯", y=1.02, fontsize=16)
+fig.suptitle("Density Plots of Features", y=1.02, fontsize=16)
 plt.tight_layout()
 plt.savefig(os.path.join(output_dir, 'density_plots.png'))
 plt.show()
