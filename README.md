@@ -35,9 +35,9 @@
 * 건강 관리 및 정책 결정: 보건 정책 수립 및 예방 교육 자료 제공, 응급 대응 시스템 구축
 
 ## > 데이터
-
+##
 [Heatstroke 자료](https://github.com/Kiminyoung3/240821_Project/blob/main/data/6.Heatstroke_train_new_header.csv)
-
+##
 ### 독립 변수
 
 * 날짜 및 시간 (Year, Month, Day)
