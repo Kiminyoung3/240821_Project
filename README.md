@@ -36,7 +36,7 @@
 
 ## > 데이터
 
-[Heatstroke 자료](https://github.com/Kiminyoung3/240821_Project/blob/main/data/6.Heatstroke_train_new_header.csv)
+[＊Heatstroke 자료](https://github.com/Kiminyoung3/240821_Project/blob/main/data/6.Heatstroke_train_new_header.csv)
 ##
 
 ### 독립 변수
