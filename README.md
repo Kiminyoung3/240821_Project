@@ -182,9 +182,12 @@ Gradient Boosting 모델이 Random Forest 모델보다 전체적으로 더 우�
 
 ###### 상관관계 시각화: 상관관계 매트릭스를 시각화하여 변수 간의 관계를 분석합니다.
 
-# >  Gradient Boosting 결과
+# >  Gradient Boosting 학습 모델
+
 ![Gradient Boosting 회귀 모델](https://github.com/user-attachments/assets/320158af-8438-4c44-9ecf-59abaa8cd1cc)
-# > Random Forest 회귀 결과
+
+# > Random Forest 학습 모델
+
 ![Random Forest 회귀 모델](https://github.com/user-attachments/assets/d6db0ea1-0f22-4bb2-810a-9c1889b12ea5)
 
 ## > 머신러닝 모델의 한계
