@@ -3,7 +3,7 @@
 </p>
 > 프로그램 참여자
 
-> Supports simple [Generator](https://capsule-render.vercel.app/).
+> 김인영 simple [Generator](https://capsule-render.vercel.app/).
 > However, we recommend reading the README for more detailed adjustments.
 
 
