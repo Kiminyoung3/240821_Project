@@ -18,7 +18,10 @@
 
 
 
-
+<div style="text-align: left;"> 
+    <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;">  </h2>  
+    <div style="font-weight: 700; font-size: 15px; text-align: left; color: #282d33;">  </div> 
+    </div>
 
 ## > 프로젝트 개요
 이 프로젝트는 건설현장에서 발생하는 열사병 환자 수를 예측하기 위한 머신러닝 모델을 개발하는 것을 목표로 합니다. 최근 여름철의 기온 상승과 작업 강도 증가로 인해 열사병 발생이 급증하고 있으며, 이를 해결하기 위해 기상 데이터와 작업 환경 데이터를 활용한 예측 모델을 구축했습니다.
