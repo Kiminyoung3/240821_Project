@@ -3,7 +3,7 @@
 </p>
 > 프로그램 참여자
 
-> 김인영 simple [Generator](https://capsule-render.vercel.app/).
+> 조장 : 김인영 simple [Generator](https://capsule-render.vercel.app/).
 > However, we recommend reading the README for more detailed adjustments.
 
 
