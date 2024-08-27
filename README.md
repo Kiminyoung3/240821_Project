@@ -92,7 +92,7 @@ Gradient Boosting 모델이 Random Forest 모델보다 전체적으로 더 우�
 필수 소프트웨어 및 라이브러리
 이 프로젝트를 실행하기 위해서는 Python 3.7 이상과 다음의 라이브러리들이 필요합니다:
 
-#### ■ pandas      ■ scikit-learn   
+<p style="margin-top: 20px;"> ■ pandas      ■ scikit-learn  </p> 
 
 #### ■ numpy       ■ seaborn
 
