@@ -42,7 +42,7 @@
 ⓖ 체감온도 (Apparent Temperature)
 
 ⓗ 불쾌지수 (Discomfort Index)
-
+###
 전날 열사병 이송 환자 수
 5일간 평균 열사병 이송 환자 수
 종속 변수
