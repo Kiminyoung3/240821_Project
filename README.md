@@ -1,3 +1,4 @@
+![header](https://capsule-render.vercel.app/api?type=wave&color=auto&height=300&section=header&text=capsule&fontSize=90)
 프로젝트 명 : Heat ? Hit !
 
 프로젝트 설명: 열사병 환자 예측 모델 개발
