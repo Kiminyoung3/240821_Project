@@ -17,6 +17,7 @@
 열사병 환자 예측 모델 개발
 
 
+
 <div style="text-align: left;"> 
     <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;">  </h2>  
     <div style="font-weight: 700; font-size: 15px; text-align: left; color: #282d33;">  </div> 
@@ -27,8 +28,64 @@
 
 ## > 목표
 
-1. 현장 작업자 안전 관리: 예측 기반의 예방 조치 및 실시간 경고 시스템 구축델
-![Random Forest 회귀 모델](https://github.com/user-attachments/assets/d6db0ea1-0f22-4bb2-810a-9c1889b12ea5)
+1. 현장 작업자 안전 관리: 예측 기반의 예방 조치 및 실시간 경고 시스템 구축
+
+2. 작업 일정 조정: 열사병 위험도가 높은 날씨 조건을 고려한 작업 일정 조정 및 휴식 주기 설정
+
+3. 건강 관리 및 정책 결정: 보건 정책 수립 및 예방 교육 자료 제공, 응급 대응 시스템 구축
+## > 데이터
+### 독립 변수
+
+###### ⓐ 날짜 및 시간 (Year, Month, Day)
+
+###### ⓑ 일 최고 기온 (Max Temperature)
+
+###### ⓒ 일 평균 기온 (Average Temperature)
+
+###### ⓓ 평균 습도 (Average Humidity)
+
+###### ⓔ 강수량 합계 (Total Precipitation)
+
+###### ⓕ 최고-최저 기온차 (Temperature Range)
+
+###### ⓖ 체감온도 (Apparent Temperature)
+
+###### ⓗ 불쾌지수 (Discomfort Index)
+
+###### ⓘ 전날 열사병 이송 환자 수
+
+###### ⓙ 5일간 평균 열사병 이송 환자 수
+
+###### ⓚ 종속 변수
+
+###### ⓛ 열사병 이송 환자 수 (Heatstroke Cases)
+
+
+# 개발결과
+## Gradient Boosting
+장점: 비선형 관계를 잘 모델링할 수 있으며, 높은 정확도를 제공하고 과적합을 방지
+성능 지표:
+
+#### MSE: 약 177.74
+
+#### RMSE: 약 13.22
+
+#### MAE: 약 7.42
+
+#### R²: 0.89
+
+## Random Forest
+장점: 변수 간 복잡한 상호작용을 잘 포착하고, 데이터의 잡음에 강함
+성능 지표:
+#### MSE: 186.28
+#### RMSE: 13.48
+#### MAE: 7.47
+#### R²: 0.88
+
+
+## > 결과
+Gradient Boosting 모델이 Random Forest 모델보다 전체적으로 더 우수한 성능을 보였으며, 예측 값이 실제 값과 더 유사하게 나타났습니다. 성능 비교 결과, Gradient Boosting 모델이 열사병 예측에 더 적합한 것으로 나타났습니다.
+
 사용 방법
 환경 설정: 프로젝트를 실행하기 위해 필요한 라이브러리 및 패키지를 설치합니다.
 데이터 준비: 기상 데이터와 작업 환경 데이터를 준비합니다.
