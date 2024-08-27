@@ -46,9 +46,13 @@ RandomForest.py: RandomForestRegressor를 사용하여 KFold 교차 검증을 �
 이 프로젝트를 실행하기 위해서는 Python 3.7 이상과 다음의 라이브러리들이 필요합니다:
 
 ■ pandas
+
 ■ numpy
+
 ■ matplotlib
+
 ■ seaborn
+
 ■ scikit-learn
 
 ○ 프로젝트 사용 방법
