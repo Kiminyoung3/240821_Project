@@ -36,6 +36,8 @@
 
 ## > 데이터
 
+##### https://github.com/Kiminyoung3/240821_Project/blob/main/data/6.Heatstroke_train_new_header.csv
+
 ### 독립 변수
 
 * 날짜 및 시간 (Year, Month, Day)
