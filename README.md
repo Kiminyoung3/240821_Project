@@ -63,8 +63,12 @@
 
 
 # 개발결과
+
 ## Gradient Boosting
 장점: 비선형 관계를 잘 모델링할 수 있으며, 높은 정확도를 제공하고 과적합을 방지
+
+![Gradient Boosting 회귀 모델](https://github.com/user-attachments/assets/320158af-8438-4c44-9ecf-59abaa8cd1cc)
+
 성능 지표:
 
 #### MSE: 약 177.74
@@ -77,6 +81,7 @@
 
 ## Random Forest
 장점: 변수 간 복잡한 상호작용을 잘 포착하고, 데이터의 잡음에 강함
+![Random Forest 회귀 모델](https://github.com/user-attachments/assets/d6db0ea1-0f22-4bb2-810a-9c1889b12ea5)
 성능 지표:
 #### MSE: 186.28
 #### RMSE: 13.48
