@@ -25,23 +25,23 @@
 작업 일정 조정: 열사병 위험도가 높은 날씨 조건을 고려한 작업 일정 조정 및 휴식 주기 설정
 건강 관리 및 정책 결정: 보건 정책 수립 및 예방 교육 자료 제공, 응급 대응 시스템 구축
 ## > 데이터
-<p style="font-size: 20px;">**독립 변수**</p>
+**독립 변수**
 
-날짜 및 시간 (Year, Month, Day)
+ⓐ 날짜 및 시간 (Year, Month, Day)
 
-일 최고 기온 (Max Temperature)
+ⓑ 일 최고 기온 (Max Temperature)
 
-일 평균 기온 (Average Temperature)
+ⓒ 일 평균 기온 (Average Temperature)
 
-평균 습도 (Average Humidity)
+ⓓ 평균 습도 (Average Humidity)
 
-강수량 합계 (Total Precipitation)
+ⓔ 강수량 합계 (Total Precipitation)
 
-최고-최저 기온차 (Temperature Range)
+ⓕ 최고-최저 기온차 (Temperature Range)
 
-체감온도 (Apparent Temperature)
+ⓖ 체감온도 (Apparent Temperature)
 
-불쾌지수 (Discomfort Index)
+ⓗ 불쾌지수 (Discomfort Index)
 
 전날 열사병 이송 환자 수
 5일간 평균 열사병 이송 환자 수
