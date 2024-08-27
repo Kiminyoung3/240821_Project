@@ -9,12 +9,12 @@
 
 프로젝트 설명: 열사병 환자 예측 모델 개발
 
-## ○ 프로젝트 개요
+## > 프로젝트 개요
 이 프로젝트의 목표는 열사병 환자 수를 예측하는 모델을 개발하는 것입니다. 이를 위해 두 가지 회귀 모델, 즉 Gradient Boosting Regressor와 Random Forest Regressor를 비교하고 성능을 평가합니다. 모델 학습 및 평가에는 다양한 기상 데이터와 환자 이송 기록을 사용하며, 결과를 시각화하여 모델의 예측 성능을 분석합니다.
 
 
 
-## ○ 프로젝트 설명
+## > 프로젝트 설명
 
 GradientBoosting.py와 RandomForest.py 스크립트는 두 가지 다른 회귀 모델(Gradient Boosting Regressor와 Random Forest Regressor)을 사용하여 열사병 환자 수 예측 문제를 다룹니다. correlation.py는 데이터 전처리 및 상관관계 분석을 위한 스크립트입니다. 여기서는 주요 코드와 기능을 비교하고 설명하겠습니다.
 
@@ -45,22 +45,19 @@ RandomForest.py: RandomForestRegressor를 사용하여 KFold 교차 검증을 �
 
 예측 결과를 시각화하여 실제 값과 예측 값의 산점도, 히스토그램, 선 그래프를 생성합니다.
 
-## ○ 프로젝트 설치 및 실행 방법
+## > 프로젝트 설치 및 실행 방법
 
 필수 소프트웨어 및 라이브러리
 이 프로젝트를 실행하기 위해서는 Python 3.7 이상과 다음의 라이브러리들이 필요합니다:
 
-■ pandas
+■ pandas      ■ scikit-learn   
 
-■ numpy
+■ numpy       ■ seaborn
 
 ■ matplotlib
 
-■ seaborn
 
-■ scikit-learn
-
-## ○ 프로젝트 사용 방법
+## > 프로젝트 사용 방법
 
 여기에 GradientBoosting.py와 RandomForest.py를 비교 분석하고, correlation.py에서 독립 변수 간 상관관계를 분석하는 과정을 설명하는 코드를 정리했습니다. 각 코드가 수행하는 작업을 이해하고 필요에 따라 수정할 수 있습니다.
 
