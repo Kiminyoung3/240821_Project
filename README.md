@@ -4,7 +4,6 @@
 > 프로그램 참여자
 
 > 조장 : 김인영 부원 : 최미선,정유진,이성준 [Generator](https://capsule-render.vercel.app/).
-> However, we recommend reading the README for more detailed adjustments.
 
 
 ## 프로젝트 명 : Heat ? Hit !
