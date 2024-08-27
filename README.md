@@ -27,29 +27,29 @@
 ## > 데이터
 ### 독립 변수
 
-##### ⓐ 날짜 및 시간 (Year, Month, Day)
+###### ⓐ 날짜 및 시간 (Year, Month, Day)
 
-##### ⓑ 일 최고 기온 (Max Temperature)
+###### ⓑ 일 최고 기온 (Max Temperature)
 
-##### ⓒ 일 평균 기온 (Average Temperature)
+###### ⓒ 일 평균 기온 (Average Temperature)
 
-##### ⓓ 평균 습도 (Average Humidity)
+###### ⓓ 평균 습도 (Average Humidity)
 
-##### ⓔ 강수량 합계 (Total Precipitation)
+###### ⓔ 강수량 합계 (Total Precipitation)
 
-##### ⓕ 최고-최저 기온차 (Temperature Range)
+###### ⓕ 최고-최저 기온차 (Temperature Range)
 
-##### ⓖ 체감온도 (Apparent Temperature)
+###### ⓖ 체감온도 (Apparent Temperature)
 
-##### ⓗ 불쾌지수 (Discomfort Index)
+###### ⓗ 불쾌지수 (Discomfort Index)
 
-##### ⓘ 전날 열사병 이송 환자 수
+###### ⓘ 전날 열사병 이송 환자 수
 
-##### ⓙ 5일간 평균 열사병 이송 환자 수
+###### ⓙ 5일간 평균 열사병 이송 환자 수
 
-##### ⓚ 종속 변수
+###### ⓚ 종속 변수
 
-##### ⓛ 열사병 이송 환자 수 (Heatstroke Cases)
+###### ⓛ 열사병 이송 환자 수 (Heatstroke Cases)
 
 
 
