@@ -103,7 +103,7 @@ Gradient Boosting 모델이 Random Forest 모델보다 전체적으로 더 우�
 
 여기에 GradientBoosting.py와 RandomForest.py를 비교 분석하고, correlation.py에서 독립 변수 간 상관관계를 분석하는 과정을 설명하는 코드를 정리했습니다. 각 코드가 수행하는 작업을 이해하고 필요에 따라 수정할 수 있습니다.
 
-1. GradientBoosting.py
+### 1. GradientBoosting.py
 
 이 스크립트는 GradientBoostingRegressor를 사용하여 열사병 환자 이송 인원 예측 모델을 훈련하고 평가합니다.
 
@@ -119,7 +119,7 @@ Gradient Boosting 모델이 Random Forest 모델보다 전체적으로 더 우�
 결과 저장: 예측 결과를 CSV 파일로 저장합니다.
 시각화: 예측 결과를 시각화하여 분석합니다.
 
-2. RandomForest.py
+### 2. RandomForest.py
 이 스크립트는 RandomForestRegressor를 사용하여 열사병 환자 이송 인원 예측 모델을 훈련하고 평가합니다.
 
 주요 단계:
@@ -134,7 +134,7 @@ Gradient Boosting 모델이 Random Forest 모델보다 전체적으로 더 우�
 결과 저장: 예측 결과를 CSV 파일로 저장합니다.
 시각화: 예측 결과를 시각화하여 분석합니다.
 
-3. correlation.py
+### 3. correlation.py
 이 스크립트는 독립 변수 간의 상관관계를 분석합니다.
 
 주요 단계:
