@@ -4,14 +4,14 @@
 
 ## 프로젝트 명 : Heat ? Hit !
 
-## 프로젝트 설명: 열사병 환자 예측 모델 개발
+프로젝트 설명: 열사병 환자 예측 모델 개발
 
-○ 프로젝트 개요
+## ○ 프로젝트 개요
 이 프로젝트의 목표는 열사병 환자 수를 예측하는 모델을 개발하는 것입니다. 이를 위해 두 가지 회귀 모델, 즉 Gradient Boosting Regressor와 Random Forest Regressor를 비교하고 성능을 평가합니다. 모델 학습 및 평가에는 다양한 기상 데이터와 환자 이송 기록을 사용하며, 결과를 시각화하여 모델의 예측 성능을 분석합니다.
 
 
 
-○ 프로젝트 설명
+## ○ 프로젝트 설명
 
 GradientBoosting.py와 RandomForest.py 스크립트는 두 가지 다른 회귀 모델(Gradient Boosting Regressor와 Random Forest Regressor)을 사용하여 열사병 환자 수 예측 문제를 다룹니다. correlation.py는 데이터 전처리 및 상관관계 분석을 위한 스크립트입니다. 여기서는 주요 코드와 기능을 비교하고 설명하겠습니다.
 
