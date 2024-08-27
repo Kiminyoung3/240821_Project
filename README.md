@@ -44,25 +44,30 @@
 ⓗ 불쾌지수 (Discomfort Index)
 ###
 전날 열사병 이송 환자 수
+
 5일간 평균 열사병 이송 환자 수
+
 종속 변수
+
 열사병 이송 환자 수 (Heatstroke Cases)
+
 모델
-Gradient Boosting
+
+###Gradient Boosting
 장점: 비선형 관계를 잘 모델링할 수 있으며, 높은 정확도를 제공하고 과적합을 방지
 성능 지표:
 MSE: 약 177.74
 RMSE: 약 13.22
 MAE: 약 7.42
 R²: 0.89
-Random Forest
+###Random Forest
 장점: 변수 간 복잡한 상호작용을 잘 포착하고, 데이터의 잡음에 강함
 성능 지표:
 MSE: 186.28
 RMSE: 13.48
 MAE: 7.47
 R²: 0.88
-결과
+###결과
 Gradient Boosting 모델이 Random Forest 모델보다 전체적으로 더 우수한 성능을 보였으며, 예측 값이 실제 값과 더 유사하게 나타났습니다. 성능 비교 결과, Gradient Boosting 모델이 열사병 예측에 더 적합한 것으로 나타났습니다.
 
 사용 방법
